@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cardchess</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button id="rules-button" onclick="toggleRules('show')"><i class="fa-classic fa-book"></i> Rules</button>
+        <div id="rules">
+            <button id="close-button" onclick="toggleRules('hide')">X</button>
+            <h1>📖 RULES</h1>
+            <h2>♟️ Basics</h2>
+            <ul>
+                <li>The game is played by two players.</li>
+                <li>Each player has 13 cards, using a quarter deck of playing cards.</li>
+                <li>12 cards are placed on the board, and 1 card is designated as the "swap card".</li>
+                <li>The cards are arranged in a 3x4 grid randomly (the King must be in the last row), and the opponent's cards are hidden from view.</li>
+                <li>Players can move their cards side, forward or diagonally forward (with some special exceptions).</li>
+                <li>The objective of the game is to either capture the opponent's king or move your own king to the opponent's backline.</li>
+            </ul>
+            <hr>
+            <h2>🎮 Gameplay</h2>
+            <p>In each turn, a player can choose one of the following actions:</p>
+            <ol>
+                <li><p><strong>Move a card:</strong></p>
+                    <ul>
+                        <li>If you move onto an opponent's card, both the card you moved and the card you landed on are revealed.</li>
+                        <li>If your card is higher in rank than the opponent's, you successfully capture their card, and it is removed from the game. You replace their card with your own.</li>
+                        <li>If your card is lower in rank, your card is captured and removed from the game, while the opponent's card remains face-up on the board.</li>
+                        <li><strong>Important note</strong>: To capture a king, it can only be defeated by a <em>face card</em> (Jack, Queen, or King) or a <em>Ten</em>. <em>Aces cannot capture the King</em>.</li>
+                    </ul>
+                </li>
+                <li><p><strong>Swap two adjacent cards:</strong></p>
+                    <ul>
+                        <li>You can exchange the position of two adjacent cards on the board.</li>
+                    </ul>
+                </li>
+                <li><p><strong>Swap a card with the "swap card":</strong></p>
+                    <ul>
+                        <li>You can replace one of your cards (except the King) with the swap card on the board.</li>
+                    </ul>
+                </li>
+            </ol>
+            <p>After your turn, the next player takes their turn.</p>
+            <hr>
+            <h2>⬆️ Promotion</h2>
+            <ul>
+                <li><p>If you reach the opponent's backline with a card, you can exchange it to a captured one.</p></li>
+                <li><p>If there is no captured card yet, the same card will be promoted.</p></li>
+                <li><p>The promoted card is placed at the first blank space in the column.</p></li>
+            </ul>
+            <h2>🃏 Special Cards</h2>
+            <ul>
+                <li><p><strong>💣 Mine (Ace):</strong></p>
+                    <ul>
+                        <li>When a mine is stepped on, it explodes, causing both the stepping card and the mine to be removed from the game.</li>
+                        <li>The mine itself can move, but it cannot step on an opponent's card.</li>
+                    </ul>
+                </li>
+                <li><p><strong>🛡️ Shield (Two):</strong></p>
+                    <ul>
+                        <li>If a card steps on a Shield, the attack is deflected, and the Shield stays in place. However, in the next turn, the Shield can be captured by a higher-ranked card.</li>
+                    </ul>
+                </li>
+                <li><p><strong>⚔️ Jack:</strong></p>
+                    <ul>
+                        <li>The Jack card cannot attack diagonally. However, it can move forward, even jumping over one of the cards directly in front of it.</li>
+                    </ul>
+                </li>
+                <li><p><strong>👑 Queen:</strong></p>
+                    <ul>
+                        <li>The Queen can only attack diagonally.</li>
+                        <li>Additionally, it can reveal the first unflipped enemy card in front of it.</li>
+                    </ul>
+                </li>
+            </ul>
+            <hr>
+            <h2>🏆 Winning Conditions:</h2>
+            <ul>
+                <li><p>A player wins the game if they either:</p>
+                    <ul>
+                        <li>Capture the opponent's King.</li>
+                        <li>Successfully move their own King to the opponent's backline.</li>
+                    </ul>
+                </li>
+                <li><p>If a King is captured by the opponent's King, it is a draw.</p></li>
+            </ul>
+        </div>
+        <div id="gameover"></div>
+        <div id="board"></div>
+        <script src="Script/animations.js"></script>
+        <script src="Script/variables.js"></script>
+        <script src="Script/createboard.js"></script>
+        <script src="Script/createfields.js"></script>
+        <script src="Script/setpositions.js"></script>
+        <script src="Script/contain.js"></script>
+        <script src="Script/capture.js"></script>
+        <script src="Script/select.js"></script>
+        <script src="Script/removemark.js"></script>
+        <script src="Script/availables.js"></script>
+        <script src="Script/move.js"></script>
+        <script src="Script/refresh.js"></script>
+        <script src="Script/promote.js"></script>
+        <script src="Script/gameover.js"></script>
+    </body>
+</html>
