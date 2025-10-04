@@ -3,7 +3,7 @@ body {
     align-content: center;
 }
 h1, h2, p, li, ul, ol {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Neue", cursive;
     text-align: left;
     color: white;
     font-size: 1.6vh;
@@ -41,7 +41,7 @@ button {
     top: 2vh;
     background-color: transparent;
     color: rgb(185, 185, 185);
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Neue", cursive;
     font-size: 150%;
     width: 140px;
     height: 70px;

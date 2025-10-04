@@ -30,14 +30,14 @@ async function createFields() {
     images[swapCardRed].style.left = positions["red-deck"].x + "px";
     images[swapCardRed].style.top = positions["red-deck"].y + "px";
     images[swapCardRed].style.zIndex = "1";
-    images[swapCardRed].style.borderRadius = "15px";
+    images[swapCardRed].style.borderRadius = 1.5*cardWidth/10 + "px";
     coords[swapCardRed] = {x: -1, y: 0};
 
     positions[swapCardBlue] = {x: window.innerWidth/2 + 2*cardWidth, y: window.innerHeight/2 - 2*cardHeight};
     positions["-1,1"] = {x: window.innerWidth/2 + 2*cardWidth, y: window.innerHeight/2 - 2*cardHeight};
     images[swapCardBlue].style.left = positions["red-deck"].x + "px";
     images[swapCardBlue].style.top = positions["red-deck"].y + "px";
-    images[swapCardBlue].style.borderRadius = "15px";
+    images[swapCardBlue].style.borderRadius = 1.5*cardWidth/10 + "px";
     coords[swapCardBlue] = {x: -1, y: 1};
 
     for (let i = 0; i < 6; i++) {
@@ -49,7 +49,7 @@ async function createFields() {
             images[board[i][j]].style.left = positions['red-deck'].x + "px";
             images[board[i][j]].style.top = positions['red-deck'].y + "px";
             images[board[i][j]].style.zIndex = 25 - (i*4+j);
-            images[board[i][j]].style.borderRadius = "15px";
+            images[board[i][j]].style.borderRadius = 1.5*cardWidth/10 + "px";
         }
     }
 

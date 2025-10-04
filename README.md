@@ -14,8 +14,6 @@ CardChess is a self-developed game inspired by chess, originally played with Fre
 * Players can move their cards side, forward or diagonally forward (with some special exceptions).
 * The objective of the game is to either capture the opponent's king or move your own king to the opponent's backline.
 
----
-
 ### **🎮 Gameplay**
 
 In each turn, a player can choose one of the following actions:
@@ -37,15 +35,11 @@ In each turn, a player can choose one of the following actions:
 
 After your turn, the next player takes their turn.
 
----
-
 ### **⬆️ Promotion**
 
 * If you reach the opponent's backline with a card, you can exchange it to a captured one.
 * If there is no captured card yet, the same card will be promoted.
 * The promoted card is placed at the first blank space in the column.
-
----
 
 ### **🃏 Special Cards**
 
@@ -67,8 +61,6 @@ After your turn, the next player takes their turn.
   * The Queen can only attack diagonally.
   * Additionally, it can reveal the first unflipped enemy card in front of it.
 
----
-
 ### **🏆 Winning Conditions**
 
 * A player wins the game if they either:
@@ -77,5 +69,3 @@ After your turn, the next player takes their turn.
   * Successfully move their own King to the opponent's backline.
 
 * If a King is captured by the opponent's King, it is a draw.
-
----

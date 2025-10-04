@@ -94,11 +94,16 @@ async function slideAnimation(id, x, y, duration=500) {
 async function flipAnimation(id) {
     if (visible[id] == 1) return;
     visible[id] = 1;
-    if (id[0] == 'r') return;
     let item = document.getElementById(id);
+    if (id[0] == 'r') {
+        item.style.opacity = "1";
+        item.style.transition = "opacity 0.2s";
+        await new Promise(resolve => setTimeout(resolve, 200));
+        return;
+    }
     item.style.rotate  ="x -90deg"
     item.style.transition = "rotate 0.2s";
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await new Promise(resolve => setTimeout(resolve, 300));
     item.src = "Images/Cards/" + id + ".png";
     item.style.rotate  ="x 0deg"
     item.alt = id;

@@ -73,38 +73,108 @@ async function refresh() {
     }
     if (turn % 2 == 1) {
         let fs = "", sc = "";
-        while(true) {
-            let rand = Math.floor(Math.random() * 13);
-            if (rand == 12) {
-                fs = swapCardBlue;
-            } else {
-                fs = blueCards[rand];
+        fs = getCoords("b13");
+        if (fs[1] > 0 && (board[fs[0]+1][fs[1]-1] == 'r10' || board[fs[0]+1][fs[1]-1] == 'r11' || board[fs[0]+1][fs[1]-1] == 'r12')) {
+            if (visible[board[fs[0]+1][fs[1]-1]]) {
+                sc = [fs[0]+1, fs[1]-1];
             }
-            fs = getCoords(fs);
+        }
+        else if (board[fs[0]+1][fs[1]] == 'r10' || board[fs[0]+1][fs[1]] == 'r11' || board[fs[0]+1][fs[1]] == 'r12') {
+            if (visible[board[fs[0]+1][fs[1]]]) {
+                sc = [fs[0]+1, fs[1]];
+            }
+        }
+        else if (fs[1] < 3 && (board[fs[0]+1][fs[1]+1] == 'r10' || board[fs[0]+1][fs[1]+1] == 'r11' || board[fs[0]+1][fs[1]+1] == 'r12')) {
+            if (visible[board[fs[0]+1][fs[1]+1]]) {
+                sc = [fs[0]+1, fs[1]+1];
+            }
+        }
+        if (sc == "") {
+            fs = getCoords("b12");
             if (fs[1] != -1) {
-                if (fs[0] < 5 && board[fs[0]+1][fs[1]][0] != 'b') {
-                    if (Math.random() < 0.8) {
+                if (fs[1] > 0 && board[fs[0]+1][fs[1]-1] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]-1]]) {
+                        sc = [fs[0]+1, fs[1]-1];
+                    }
+                }
+                else if (fs[1] < 3 && board[fs[0]+1][fs[1]+1] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]+1]]) {
+                        sc = [fs[0]+1, fs[1]+1];
+                    }
+                }
+            }
+        }
+        if (sc == "") {
+            fs = getCoords("b11");
+            if (fs[1] != -1) {
+                if (board[fs[0]+1][fs[1]] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]]]) {
+                        sc = [fs[0]+1, fs[1]];
+                    }
+                }
+                else if (fs[0] < 4 && board[fs[0]+2][fs[1]] == 'r13') {
+                    if (visible[board[fs[0]+2][fs[1]]]) {
+                        sc = [fs[0]+2, fs[1]];
+                    }
+                }
+            }
+        }
+        if (sc == "") {
+            fs = getCoords("b10");
+            if (fs[0] != -1) {
+                if (fs[1] > 0 && board[fs[0]+1][fs[1]-1] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]-1]]) {
+                        sc = [fs[0]+1, fs[1]-1];
+                    }
+                }
+                else if (board[fs[0]+1][fs[1]] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]]]) {
+                        sc = [fs[0]+1, fs[1]];
+                    }
+                }
+                else if (fs[0] < 3 && board[fs[0]+1][fs[1]-1] == 'r13') {
+                    if (visible[board[fs[0]+1][fs[1]-1]]) {
+                        sc = [fs[0]+1, fs[1]-1];
+                    }
+                }
+            }
+        }
+        if (sc == "") {
+            while(true) {
+                let rand = Math.floor(Math.random() * 13);
+                if (rand == 12) {
+                    fs = swapCardBlue;
+                } else {
+                    fs = blueCards[rand];
+                }
+                fs = getCoords(fs);
+                if (fs[1] != -1) {
+                    if (fs[0] < 5 && board[fs[0]+1][fs[1]][0] != 'b') {
+                        if (Math.random() < 0.8) {
+                            break;
+                        }
+                    } else if (Math.random() < 0.02) {
                         break;
                     }
-                } else if (Math.random() < 0.02) {
-                    break;
                 }
             }
         }
         await new Promise(resolve => setTimeout(resolve, 1000));
         select(fs[0], fs[1], bot=true);
         await new Promise(resolve => setTimeout(resolve, 1000));
-        while(true) {
-            sc = availableFields[Math.floor(Math.random() * availableFields.length)];
-            if (sc[0] != -1 && board[sc[0]][sc[1]][0] == 'r' && Number(board[sc[0]][sc[1]].slice(1)) > Number(board[fs[0]][fs[1]].slice(1))) {
-                continue;
-            }
-            if (fs[0] < sc[0]) {
-                if (Math.random() < 0.8) {
+        if (sc == "") {
+            while(true) {
+                sc = availableFields[Math.floor(Math.random() * availableFields.length)];
+                if (sc[0] != -1 && board[sc[0]][sc[1]][0] == 'r' && visible[board[sc[0]][sc[1]]] && Number(board[sc[0]][sc[1]].slice(1)) > Number(board[fs[0]][fs[1]].slice(1))) {
+                    continue;
+                }
+                if (fs[0] < sc[0]) {
+                    if (Math.random() < 0.8) {
+                        break;
+                    }
+                } else if (Math.random() < 0.02) {
                     break;
                 }
-            } else if (Math.random() < 0.02) {
-                break;
             }
         }
         select(sc[0], sc[1], bot=true);

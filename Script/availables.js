@@ -191,7 +191,8 @@ async function availables(x, y) {
             }
             image.style.left = positions[availableFields[i][0] + ',' + availableFields[i][1]].x + "px";
             image.style.top = positions[availableFields[i][0] + ',' + availableFields[i][1]].y + "px";
-            image.style.zIndex = "30";
+            image.style.zIndex = "50";
+            image.style.opacity = "1";
             image.addEventListener("mouseover", function() {image.style.transform = "scale(1.1)"; image.style.transition = "transform 0.2s";});
             image.addEventListener("mouseout", function() {image.style.transform = "scale(1)"; image.style.transition = "transform 0.2s";});
             image.addEventListener("click", function() {select(availableFields[i][0], availableFields[i][1]);});

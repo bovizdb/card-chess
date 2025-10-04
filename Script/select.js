@@ -54,8 +54,9 @@ async function select(x, y, bot=false) {
             } else {
                 selectAnimation(board[x][y]);
                 await new Promise(resolve => setTimeout(resolve, 300));
-                if (board[x][y][0] == 'b' && visible[board[x][y]] == 0) {
+                if (board[x][y][0] == 'b') {
                     remove();
+                    await flipAnimation(board[selected[0]][selected[1]]);
                     await flipAnimation(board[x][y]);
                 }
             }
@@ -101,9 +102,10 @@ async function select(x, y, bot=false) {
             } else {
                 selectAnimation(board[x][y]);
                 await new Promise(resolve => setTimeout(resolve, 300));
-                if (board[x][y][0] == 'r' && visible[board[x][y]] == 0) {
+                if (board[x][y][0] == 'r') {
                     remove();
                     await flipAnimation(board[selected[0]][selected[1]]);
+                    await flipAnimation(board[x][y]);
                 }
             }
             if (x == -1 && y == 1) {
@@ -116,4 +118,4 @@ async function select(x, y, bot=false) {
             }
         }
     }
-}
+}   

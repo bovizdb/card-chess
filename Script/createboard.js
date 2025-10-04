@@ -18,6 +18,7 @@ async function createBoard() {
         if (id[0] == 'r') {
             images[id].src = "Images/Cards/" + id + ".png";
             images[id].alt = id;
+            images[id].style.opacity = "0.8";
             images[id].addEventListener("mouseover", function() {zoomIn(id);});
             images[id].addEventListener("mouseout", function() {zoomOut(id);});
         }
@@ -47,7 +48,7 @@ async function createBoard() {
     blueCards.sort(function() {return 0.5 - Math.random()});
     blueCards.splice(randPoz, 0, "b13");
 
-    visible[swapCardRed] = 1;
+    visible[swapCardRed] = 0;
     visible[swapCardBlue] = 0;
     for (let i = 0; i < 12; i++) {
         visible[redCards[i]] = 0;
